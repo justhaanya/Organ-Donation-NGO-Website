@@ -1,7 +1,7 @@
 # Organ Donation NGO
 
 ## Live Demo
-[View Live Demo](https://justhaanya.github.io/NGO-Website-/)
+[View Live Demo](https://justhaanya.github.io/Organ-Donation-NGO-Website/)
 
 ## Project Overview
 This project is a web application for an Organ Donation NGO. It aims to encourage people to pledge their organs and save lives. The website features a single-page design to navigate between home, about, impact, and donation sections, and includes a backend processing script for collecting donor details.
