@@ -1,0 +1,11 @@
+# Ignore uploads folder contents but keep the folder
+/uploads/*
+!/uploads/.gitkeep
+
+# Ignore common temporary and IDE files
+.vscode/
+.idea/
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db

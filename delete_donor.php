@@ -3,13 +3,15 @@ include 'db.php';
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $sql = "DELETE FROM donors WHERE id = $id";
+    $stmt = $conn->prepare("DELETE FROM donors WHERE id = ?");
+    $stmt->bind_param("i", $id);
 
-    if ($conn->query($sql) === TRUE) {
+    if ($stmt->execute()) {
         echo "Donor deleted successfully!";
     } else {
-        echo "Error: " . $conn->error;
+        echo "Error: " . $stmt->error;
     }
+    $stmt->close();
 }
 
 $conn->close();

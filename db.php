@@ -1,34 +1,15 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = ""; // Keep this empty for XAMPP
-$database = "ngo_donation";
+// Use environment variables for production, fallback to local XAMPP defaults
+$host = getenv('DB_HOST') ?: "localhost";
+$user = getenv('DB_USER') ?: "root";
+$password = getenv('DB_PASS') !== false ? getenv('DB_PASS') : "";
+$database = getenv('DB_NAME') ?: "ngo_donation";
 
-// Create connection (without port)
-$conn = new mysqli($servername, $username, $password);
+// Create connection
+$conn = new mysqli($host, $user, $password, $database);
 
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-}
-
-// Create database if it doesn't exist
-$sql = "CREATE DATABASE IF NOT EXISTS $database";
-if ($conn->query($sql) === TRUE) {
-    echo "Database verified!";
-} else {
-    die("Error creating database: " . $conn->error);
-}
-
-$conn->close();
-
-// Connect to the actual database
-$conn = new mysqli($servername, $username, $password, $database);
-
-// Final check
-if ($conn->connect_error) {
-    die("Final Connection failed: " . $conn->connect_error);
-} else {
-    echo "Connected to database successfully!";
 }
 ?>

@@ -78,6 +78,24 @@
             max-width: 700px;
             margin: auto;
         }
+
+        .qr-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #003366;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #FFA500;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            z-index: 100;
+        }
+        
+        .qr-popup h3 {
+            margin-top: 0;
+        }
     </style>
 </head>
 <body>
@@ -96,10 +114,8 @@
 
     <section id="home">
         <div class="content-box">
-            "YOUR <span style="color: #000000; font-weight: bold;">DECISION</span>, THEIR SECOND <span style="color: #000000; font-weight: bold;">CHANCE</span>"
-            <h3 style="color: #300546; font-family: 'Verdana', sans-serif; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">
-                HELP to create a better life
-            </h3>
+            <h2>"YOUR DECISION, THEIR SECOND CHANCE"</h2>
+            <h3>HELP to create a better life</h3>
             <p>Organ donation is a noble act that gives someone a second chance at life. Every day, thousands of people wait for an organ transplant, hoping for a miracle. By donating an organ, you can help save lives and make a difference.</p>
             <p>One donor can save up to 8 lives by donating their heart, lungs, liver, kidneys, pancreas, and intestines. Tissue donations such as corneas, skin, and bones can enhance the lives of many more.</p>
             <button class="btn" onclick="showSection('donate')">Donate Now</button>
@@ -144,6 +160,7 @@
                 <label>Upload Payment Screenshot:</label>
                 <input type="file" name="payment_screenshot" accept="image/*" required><br><br>
                 <button type="submit" class="btn">Submit Donation</button>
+                <button type="button" class="btn" onclick="showQR()">Show QR Code</button>
             </form>
             <!-- QR Code Popup -->
     <div class="qr-popup" id="qrPopup">
@@ -156,8 +173,8 @@
     <section id="contact" class="hide">
         <div class="content-box">
             <h2>Contact Us</h2>
-            <h1>Email: odn@gmail.com</h1>
-            <h2>Phone: 123-456-7890</h2>
+            <p>Email: odn@gmail.com</p>
+            <p>Phone: 123-456-7890</p>
         </div>
     </section>
 
@@ -171,6 +188,14 @@
                 section.classList.add("hide");
             });
             document.getElementById(sectionId).classList.remove("hide");
+        }
+
+        function showQR() {
+            document.getElementById("qrPopup").style.display = "block";
+        }
+
+        function closeQR() {
+            document.getElementById("qrPopup").style.display = "none";
         }
     </script>
 
