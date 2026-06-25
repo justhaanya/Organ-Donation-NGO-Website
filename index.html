@@ -151,7 +151,7 @@
         <div class="content-box">
             <h2>Donate Now</h2>
             <p>Fill out the form to become an organ donor.</p>
-            <form action="submit_form.php" method="post" enctype="multipart/form-data">
+            <form id="donationForm" action="submit_form.php" method="post" enctype="multipart/form-data">
                 <input type="text" name="fullname" placeholder="Full Name" required><br><br>
                 <input type="number" name="age" placeholder="Age" required><br><br>
                 <input type="text" name="organ" placeholder="Organ to Donate" required><br><br>
@@ -197,6 +197,19 @@
         function closeQR() {
             document.getElementById("qrPopup").style.display = "none";
         }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.getElementById("donationForm");
+            if (form) {
+                form.addEventListener("submit", function(e) {
+                    if (window.location.hostname.includes("github.io")) {
+                        e.preventDefault();
+                        alert("Demo Submission Successful! Thank you for your interest in organ donation.");
+                        form.reset();
+                    }
+                });
+            }
+        });
     </script>
 
 </body>
